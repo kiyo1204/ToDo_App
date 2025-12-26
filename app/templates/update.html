@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="/update" method="post">
+        <input class="form-control btn btn-primary" type="submit" value="更新">
+        {% for task in my_tasks %}
+        <div class="row">
+            <div class="col">
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="name_{{task.id}}" id="name_{{task.id}}" value="{{task.name}}"
+                    <label for="name" class="col-form-label">タスク名</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="form-floating">
+                    <input class="form-control" type="datetime-local" name="deadline_{{task.id}}" id="deadline" value="{{task.deadline}}">
+                    <label for="deadline" class="col-form-label">締切日時</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <input class="form-check-input" type="checkbox" name="is_shared_{{task.id}}" id="is_shared_{{task.id}}" {{"checked" if task.is_shared}}>
+                <label for="is_shared" class="form-check-label">共有する</label>
+                <div>
+                    <input class="form-check-input" type="checkbox" name="my_favorite_{{task.id}}" id="my_favorite_{{task.id}}" {{"checked" if task.my_favorite}}>
+                    <label for="my_favorite" class="form-check-label">お気に入り</label>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </form>
+{% endblock content %}

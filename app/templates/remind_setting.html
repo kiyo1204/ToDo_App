@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/remind_setting" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="form-floating">
+                <input class="form-control" type="email" name="email" id="email" value="{{user.email}}"
+                <label for="email" class="col-form-label">メールアドレス</label>
+            </div>
+        </div>
+        <div class="col-auto">
+            <input class="form-control btn btn-primary" type="submit" value="更新">
+        </div>
+    </div>
+    <div style="width:30%; display:flex; box-sizing:border-box">
+        <input class="form-control" type="number" name="timing_hours" id="timing_hours" value="{{user.timing_hours}}"
+        <label for="timinig_hours" class="col-form-label">時間</label>
+   
+        <input class="form-control" type="number" name="timing_minutes" id="timing_minutes" value="{{user.timing_minutes}}"
+        <label for="timinig_minutes" class="col-form-label">分</label>
+    </div>
+</form>
+{% endblock content %}

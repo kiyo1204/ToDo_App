@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクリマインダー</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #333;
+        }
+        .task {
+            margin-bottom: 20px;
+        }
+        .task-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .Deadline {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .message {
+            color: #d35400;
+            font-weight: bold;
+        }
+        .id {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>タスクリマインダー</h1>
+        <div class="task">
+            <p class="task-name">タスク名: <span id="task-name">{{task_name}}</span></p>
+            <p class="deadline">締め切り: <span id="due-date">{{deadline}}</span></p>
+            <p class="message"><span id="message">{{message}}</span></p>
+            <p class="id"><span id="id">{{id}}さんのタスク</span></p>
+        </div>
+    </div>
+</body>
+</html>

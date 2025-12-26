@@ -1,0 +1,6 @@
+Flask-Migrate<5
+Flask-SQLAlchemy<4
+Flask-Login<0.7
+Flask<4
+PyMySQL<2
+Flask-APScheduler

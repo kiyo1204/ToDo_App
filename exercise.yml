@@ -1,0 +1,55 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.2.0
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.kubernetes.cri-o.SandboxID/app_server: 99621b5aaa335fe055a1a91b366d9e2a13ec3603d3a96bbe6e9e9f66985b2fe1
+    io.kubernetes.cri-o.SandboxID/db_server: 99621b5aaa335fe055a1a91b366d9e2a13ec3603d3a96bbe6e9e9f66985b2fe1
+  creationTimestamp: "2024-09-19T10:00:41Z"
+  name: exercise
+spec:
+  containers:
+  - name: app
+    image: flask
+    ports:
+    - containerPort: 5000
+      hostPort: 5000
+    env:
+    - name: FLASK_APP
+      value: app.py
+    - name: FLASK_DEBUG
+      value: 1
+    - name: FLASK_RUN_HOST
+      value: 0.0.0.0
+    - name: FLASK_RUN_PORT
+      value: 5000
+    volumeMounts:
+    - mountPath: /app
+      name: app-pvc
+  - name: db
+    image: mirror.gcr.io/mariadb:11
+    env:
+    - name: MARIADB_ROOT_PASSWORD
+      value: db_root_password
+    - name: MARIADB_USER
+      value: db_user
+    - name: MARIADB_PASSWORD
+      value: db_password
+    - name: MARIADB_DATABASE
+      value: app_db
+    userns: keep-id
+    volumeMounts:
+    - mountPath: /var/lib/mysql
+      name: db-pvc
+  volumes:
+  - hostPath:
+      path: ../../mnt/c/Users/kyoum/exercise/app
+      type: Directory
+    name: app-pvc
+  - hostPath:
+      path: ../../mnt/c/Users/kyoum/exercise/db
+      type: Directory
+    name: db-pvc

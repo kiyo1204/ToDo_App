@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+*{box-sizing: border-box;}
+*:focus{outline: auto;}
+body {font-family: Arial;background-color: #3498db;}
+
+
+ .centered-form 
+{ display: flex; justify-content: center; align-items: center; height: 100vh; width: 400px;
+    border: solid 3px;
+   background-color:  #fff;padding: 20px; border-radius: 5px;}
+
+
+.fsize
+    { font-size: 50px; text-align: center;}
+
+</style>
+
+<body>
+    <div class="container centered-form">
+        
+        <form action="/login" method="post">
+        <p class="fsize">{{title}}</p>
+
+    
+    
+    
+            <div class="row">
+                <div style="text-align:center" class="col-auto">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="id" id="id" placeholder="ユーザIDを入力...">
+                        <label for="id" class="col-form-label" >ユーザID</label>
+    
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="row">
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <input class="form-control" type="password" name="password" id="password" placeholder="パスワードを入力...">
+                        <label for="password" class="col-form-label">パスワード</label>
+                    </div>
+                </div>
+            </div>
+    
+        <div class="row">
+            <div class="col-auto" >
+                <input class="btn btn-primary" width=300px type="submit" value="ログイン">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <a href="/account_delete"><button type="button" class="btn btn-warning">アカウント削除</button></a>
+                <a href="/register"><button type="button" class="btn btn-warning">新規ユーザ登録</button></a>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+{% endblock content %}
